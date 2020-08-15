@@ -1,6 +1,8 @@
 package com.tests;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
@@ -19,14 +21,15 @@ public class BaseTest {
         // BROWSER => chrome / firefox
         // HUB_HOST => localhost / 10.0.1.3 / hostname
 
-        String host = "localhost";
+        String host = "192.168.99.100";
         DesiredCapabilities dc;
 
         if(System.getProperty("BROWSER") != null &&
                 System.getProperty("BROWSER").equalsIgnoreCase("firefox")){
             dc = DesiredCapabilities.firefox();
         }else{
-            dc = DesiredCapabilities.chrome();
+            dc = DesiredCapabilities.firefox();
+            
         }
 
         if(System.getProperty("HUB_HOST") != null){

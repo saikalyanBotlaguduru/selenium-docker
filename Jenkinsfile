@@ -15,14 +15,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                	app = docker.build("vinsdocker/selenium-docker")
+                	app = docker.build("botlasai/selenium-docker")
                 }
             }
         }
         stage('Push Image') {
             steps {
                 script {
-			        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+			        docker.withRegistry('https://registry.hub.docker.com', 'dockerhubcred') {
 			        	app.push("${BUILD_NUMBER}")
 			            app.push("latest")
 			        }
